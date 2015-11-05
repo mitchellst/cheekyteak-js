@@ -12,7 +12,7 @@ describe("The live search controller initializer", function(){
     scope.init();
   }));
 
-  it("creates an invitations array on the scope.", function(){
+  it("creates an invitations object on the scope.", function(){
     expect(Object.keys(scope.invitations).length > 0).toBeTruthy();
   });
 
@@ -41,6 +41,31 @@ describe("The live search function", function(){
   it("doesn't filter results if search term is too short.", function(){
     scope.liveSearch('me', 'm');
     expect(scope.filtered.length).toEqual(0);
+  });
+
+  it("does filter results for valid search term.", function(){
+    scope.liveSearch('Chris', 'Chri');
+    expect(scope.filtered.length).not.toEqual(0);
+  });
+
+  it("does not over-prefer first-last name repetition", function(){
+    scope.liveSearch('Chris', 'Chri');
+    expect(scope.filtered.length).toEqual(2);
+  });
+
+  it("does not get results for nonsense terms", function(){
+    scope.liveSearch('Nonsen', 'Nonse');
+    expect(scope.filtered.length).toEqual(0);
+  });
+
+  it("does not over-rank people of same last name", function(){
+    scope.liveSearch('Kim', 'Ki');
+    expect(scope.filtered.length).toEqual(2);
+  });
+
+  it("does kick out people of same last name with more specific first", function(){
+    scope.liveSearch('Brian Ki', "Brian K");
+    expect(scope.filtered.length).toEqual(1);
   });
 
 

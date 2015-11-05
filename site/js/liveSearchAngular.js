@@ -33,22 +33,25 @@ if (!String.prototype.startsWith) {
 		$scope.liveSearch = function(term, oldTerm){
 			if (term.length < 3) {//input too short.
 				$scope.filtered = []; return; }
-			function scoreInvitation(invitation, searchterms){
-				var score = 0;
-				for (var i = 0; i < invitation.guest.length; i++) {
-					for (var j = 0; j < searchterms.length; j++) {
-						if (invitation.guest[i].first.startsWith(searchterms[j])){
-							searchterms.splice(j,1);
-							score++;
+      var searchterms = term.trim().split(' '),
+			scoreInvitation = function(invitation){
+				var score = 0,
+        //array of false booleans of lenght search terms.
+        localterms = _.map(searchterms, function(term){return false;});
+				for (var i = 0; i < invitation.guests.length; i++) {
+					for (var j = 0; j < localterms.length; j++) {
+						if (invitation.guests[i].first.startsWith(searchterms[j]) || invitation.guests[i].last.startsWith(searchterms[j])){
+							localterms[j] = true;
 						}
 					}
 				}
-				return score;
-			}
-			var searchterms = term.trim().split(' '),
-			topscore = _.max($scope.invitations, scoreInvitation(invitation, searchterms));
+        //The score is the number of "true"s in localterms array.
+				return _.reduce(localterms, function(mem, val){if (val){ return mem+1;} return mem;}, 0);
+			},
+			topscore = scoreInvitation(_.max($scope.invitations, scoreInvitation));
+      if (topscore === 0){$scope.filtered = []; return;}
 			$scope.filtered = _.filter($scope.invitations, function(invitation){
-				return scoreInvitation(invitation, searchterms) === topscore;
+				return scoreInvitation(invitation) === topscore;
 			});
 		};
 
