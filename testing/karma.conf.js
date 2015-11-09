@@ -10,6 +10,7 @@ module.exports = function(config){
       // then application code
       'src/js/polyfills.js',
       'src/js/weddingNames.js',
+      'src/js/Invitations.js',
       'src/js/liveSearchAngular.js',
 
       // then spec files

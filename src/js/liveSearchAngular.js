@@ -14,7 +14,7 @@
   			},
 		$scope.csrf = "";
 		$scope.guests = [];
-		$scope.invitations = {};
+		$scope.invitations = [];
 		$scope.filtered = [];
 		$scope.showHallo = false;
 		$scope.reservationChosen = false;
@@ -62,12 +62,13 @@
 
 
 		$scope.init = function(){
-			//Set up the $scope.invitations object, which allows us to sort by
-			//group rather than by individual.
+			//Initialize invitations
+
 			var keys = _.uniq(_.map($scope.guests, function(person){return person.invitation;}));
 			_.each(keys, function(key){
-				$scope.invitations[key] = {name: "", guests: _.where($scope.guests, {invitation: key})};
-			});
+				$scope.invitations.push(
+					new Invitation(_.where($scope.guests, {invitation: key,})));
+				});
 		};
 		$scope.init();
 	}]);
