@@ -6,7 +6,7 @@
 
 function getInvitationName (ga, config){
 	//ga is an array of guests. config is formatting object.
-	config = typeof(config)!== 'undefined' ? config : $scope.nameFormatter = {pfxPrimary: true,pfxWith: false,snmWith: true,andChar: '&',withChar: 'with'};
+	config = typeof(config)!== 'undefined' ? config : {pfxPrimary: true,pfxWith: false,snmWith: true,andChar: '&',withChar: 'with'};
 
 	function individualGuestString(guest, is_Primary){
 		var guestArr = [guest.first, guest.last];

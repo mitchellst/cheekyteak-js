@@ -183,4 +183,9 @@ it("properly formats two parents and four children of same last names", function
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with David & David Collier and guests');
 	});
 
+	it("works on default settings if you don't pass a format config", function() {
+		expect(getInvitationName([guest5, guest6, guest11, guest11]))
+		.toBe('Dr. & Mrs. Marv & Cyndy Kym with David & David Collier and guests');
+	});
+
 });
