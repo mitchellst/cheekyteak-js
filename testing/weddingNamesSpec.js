@@ -94,92 +94,92 @@ describe("The invitation string suite", function(){
 	};
 
 	it("returns an empty string if it is not passed any guests.", function() {
-		expect(getInvitationName(formatterConfig, []))
+		expect(getInvitationName([], formatterConfig))
 		.toBe('');
 	});
 
 	it("properly formats a single guest", function() {
-		expect(getInvitationName(formatterConfig, [guest1,]))
+		expect(getInvitationName([guest1,], formatterConfig))
 		.toBe('Mr. Mitchell Stoutin');
 	});
 
 	it("properly formats a pair of primary guests", function(){
-		expect(getInvitationName(formatterConfig, [guest1, guest2]))
+		expect(getInvitationName([guest1, guest2], formatterConfig))
 		.toBe('Mr. & Mrs. Mitchell & Jaqueline Stoutin');
 	});
 
 	it("properly formats doctors with the same last name", function(){
-		expect(getInvitationName(formatterConfig, [guest3, guest4]))
+		expect(getInvitationName([guest3, guest4], formatterConfig))
 		.toBe('Drs. Lyndal & Sherry Stoutin');
 	});
 
 	it("will do the awkward traditional thing where it puts the man's name first.", function(){
-		expect(getInvitationName(formatterConfig, [guest2, guest1]))
+		expect(getInvitationName([guest2, guest1], formatterConfig))
 		.toBe('Mr. & Mrs. Mitchell & Jaqueline Stoutin');
 	});
 
 	it("properly formats a single parent and child", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest7]))
+		expect(getInvitationName([guest5, guest7], formatterConfig))
 		.toBe('Dr. Marv Kym with Rachel Kym');
 	});
 
 	it("properly formats two parents and child", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7]))
+		expect(getInvitationName([guest5, guest6, guest7], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel Kym');
 	});
 
 	it("properly formats two parents and two children of same last name", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7, guest8]))
+		expect(getInvitationName([guest5, guest6, guest7, guest8], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel & Brian Kym');
 	});
 
 	it("properly formats two parents and two children of different last names", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7, guest9]))
+		expect(getInvitationName([guest5, guest6, guest7, guest9], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel Kym & Kyrsten Spurrier');
 	});
 
 	it("properly formats two parents and three children of same last names", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7, guest8, guest10]))
+		expect(getInvitationName([guest5, guest6, guest7, guest8, guest10], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel, Brian & Mariah Kym');
 	});
 
 	it("properly formats two parents and four children of same last names", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7, guest8, guest8, guest10]))
+		expect(getInvitationName([guest5, guest6, guest7, guest8, guest8, guest10], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel, Brian, Brian & Mariah Kym');
 	});
 
 it("properly formats two parents and four children of same last names", function(){
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest7, guest8, guest8, guest10]))
+		expect(getInvitationName([guest5, guest6, guest7, guest8, guest8, guest10], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Rachel, Brian, Brian & Mariah Kym');
 	});
 
 	it("properly formats one parent with a list of children", function(){
-		expect(getInvitationName(formatterConfig, [guest6, guest7, guest8, guest10]))
+		expect(getInvitationName([guest6, guest7, guest8, guest10], formatterConfig))
 		.toBe('Mrs. Cyndy Kym with Rachel, Brian & Mariah Kym');
 	});
 
 	it("adds a guest with a lone primary guest with a plus one", function() {
-		expect(getInvitationName(formatterConfig, [guest11,]))
+		expect(getInvitationName([guest11,], formatterConfig))
 		.toBe('Mr. David Collier and guest');
 	});
 
 	it("adds plural guests with a lone primary guest with two plus ones", function() {
-		expect(getInvitationName(formatterConfig, [guest12,]))
+		expect(getInvitationName([guest12,], formatterConfig))
 		.toBe('Mrs. Kyrsten Spurrier and guests');
 	});
 
 	it("adds plural plus ones to 'with' guest", function() {
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest12,]))
+		expect(getInvitationName([guest5, guest6, guest12,], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with Kyrsten Spurrier and guests');
 	});
 
 	it("adds single plus one to 'with' guests", function() {
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest11,]))
+		expect(getInvitationName([guest5, guest6, guest11,], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with David Collier and guest');
 	});
 
 	it("adds plural plus one to 'with' guests who each have on plusOne", function() {
-		expect(getInvitationName(formatterConfig, [guest5, guest6, guest11, guest11]))
+		expect(getInvitationName([guest5, guest6, guest11, guest11], formatterConfig))
 		.toBe('Dr. & Mrs. Marv & Cyndy Kym with David & David Collier and guests');
 	});
 

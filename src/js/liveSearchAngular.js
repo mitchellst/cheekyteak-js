@@ -54,7 +54,7 @@
       // otherwise put all the best matches in scope.filtered.
 			$scope.filtered = _.filter($scope.invitations, function(invitation){
 				if(scoreInvitation(invitation) === topscore){
-          invitation.name = getInvitationName($scope.nameFormatter, invitation.guests);
+          invitation.name = getInvitationName(invitation.guests, $scope.nameFormatter);
           return true;
         }
 			});

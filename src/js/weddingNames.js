@@ -4,9 +4,10 @@
 
 // Function takes an array of person objects and a formatting object.
 
-function getInvitationName (config, ga){
+function getInvitationName (ga, config){
 	//ga is an array of guests. config is formatting object.
-	
+	config = typeof(config)!== 'undefined' ? config : $scope.nameFormatter = {pfxPrimary: true,pfxWith: false,snmWith: true,andChar: '&',withChar: 'with'};
+
 	function individualGuestString(guest, is_Primary){
 		var guestArr = [guest.first, guest.last];
 		if (config.pfxPrimary && is_Primary || config.pfxWith && !is_Primary){
@@ -47,7 +48,7 @@ function getInvitationName (config, ga){
 	}
 
 	if (ga.length < 1){return '';} // edge case annoyance.
-	
+
 	//Initialize output array and fill first guest name.
 	var withStart = 2; //Usually formatting for couples, so child guests start at index 2 in ga.
 	var output = individualGuestString(ga[0], true);
