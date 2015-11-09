@@ -64,7 +64,7 @@ function getInvitationName (ga, config){
 		if(ga.length > withStart){
 			output.push(config.withChar);
 			// Do the kids / accompanying guests all have the same last name?
-			var samelast = _.every(ga.slice(withStart), function(val){return val.last == ga[withStart].last})
+			var samelast = _.every(ga.slice(withStart), function(val){return val.last == ga[withStart].last;});
 			for (var j = 0; j < ga.slice(withStart).length-1; j++) {
 				var wguest = individualGuestString(ga.slice(withStart)[j]);
 				if (samelast && config.snmWith) {

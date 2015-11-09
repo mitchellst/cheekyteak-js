@@ -15,8 +15,12 @@ module.exports = function(grunt) {
     },
     jshint: {
       all: ['Gruntfile.js',
-        'application/liveSearchAngular.js',
+        'src/js/liveSearchAngular.js',
         'testing/liveSearchSpecFile.js',
+        'src/js/Invitations.js',
+        'testing/invitationTypeSpec.js',
+        'src/js/weddingNames.js',
+        'testing/weddingNamesSpec.js',
         'testing/karma.conf.js'
       ]
     },

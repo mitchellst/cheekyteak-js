@@ -15,7 +15,7 @@ function Invitation(guests){
   this.attendingName = undefined;
   this.decliningName = undefined;
   this.attendance = _.countBy(this.guests, function(val){
-    if (val.status===0){return 'outstanding';}
+    if (val.status===0 || val.status === undefined){return 'outstanding';}
     if (val.status===1){return 'attending';}
     if (val.status===2){return 'notAttending';}
   });
@@ -25,7 +25,7 @@ function Invitation(guests){
 Invitation.prototype.setId = function(ga){
   if (ga.length === 0){return undefined;}
   if(!_.every(ga, function(val){
-    return val.invitation == ga[0].invitation || val.invitation == undefined;})){
+    return val.invitation == ga[0].invitation || val.invitation === undefined;})){
     console.error("can't make an group of guests who are not grouped on the server.");
   }
   return ga[0].invitation;
@@ -34,4 +34,4 @@ Invitation.prototype.setId = function(ga){
 Invitation.prototype.getStatusName = function(ga, status, config){
   var a = _.filter(ga, function(val){return val.status == status;});
   return getInvitationName(a, config);
-}
+};

@@ -11,7 +11,7 @@
   				snmWith: true,
   				andChar: '&',
   				withChar: 'with'
-  			},
+  			};
 		$scope.csrf = "";
 		$scope.guests = [];
 		$scope.invitations = [];
