@@ -71,7 +71,7 @@ describe("The live search function", function(){
   it("assigns a name to invitations in the filtered list", function(){
     scope.liveSearch('Brian', 'Bria');
     expect(scope.filtered[0].name).not.toBe('');
-  })
+  });
 
 
 });

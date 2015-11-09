@@ -3,13 +3,14 @@ module.exports = function(config){
     basePath : '..',
     files : [
       //frameworks first (and angular before ng-mocks)
-      'site/js/dependencies/angular.min.js',
-      'testing/angular-mocks.js',
-      'site/js/dependencies/underscore-min.js',
+      'bower_components/angular/angular.min.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/underscore/underscore-min.js',
 
       // then application code
-      'site/js/weddingNames.js',
-      'site/js/liveSearchAngular.js',
+      'src/js/polyfills.js',
+      'src/js/weddingNames.js',
+      'src/js/liveSearchAngular.js',
 
       // then spec files
       'testing/weddingNamesSpec.js',

@@ -1,0 +1,27 @@
+{
+  "name": "cheekyteak-js-apps",
+  "description": "Javascript apps for Cheeky Teak project.",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Mitchell Stoutin"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/mitchellst/cheekyteak-js",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bourbon": "~4.2.6",
+    "neat": "~1.7.2",
+    "normalize-css": "normalize.css#~3.0.3",
+    "underscore": "~1.8.3",
+    "angular": "1.4.6",
+    "angular-mocks": "1.4.6"
+  }
+}

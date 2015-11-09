@@ -4,14 +4,21 @@
   "description": "Javascript apps for Cheeky Teak project.",
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "grunt karma"
+    "test": "grunt test"
   },
   "author": "Mitchell Stoutin",
   "license": "ISC",
   "devDependencies": {
+    "bower": "^1.6.5",
     "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.12.1",
+    "grunt-sass": "^1.1.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.15",
     "karma-jasmine": "^0.3.6",
