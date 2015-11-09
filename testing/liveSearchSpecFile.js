@@ -73,5 +73,10 @@ describe("The live search function", function(){
     expect(scope.filtered[0].name).not.toBe('');
   });
 
+  it("is case insensitive", function(){
+    scope.liveSearch('brian', 'bria');
+    expect(scope.filtered.length).toEqual(1);
+  });
+
 
 });

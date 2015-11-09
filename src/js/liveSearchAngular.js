@@ -32,14 +32,14 @@
 		$scope.liveSearch = function(term, oldTerm){
 			if (term.length < 3) {//input too short.
 				$scope.filtered = []; return; }
-      var searchterms = term.trim().split(' '),
+      var searchterms = term.toLowerCase().trim().split(' '),
 			scoreInvitation = function(invitation){
 				var score = 0,
         //array of false booleans of lenght search terms.
         matchedTerms = _.map(searchterms, function(term){return false;});
 				for (var i = 0; i < invitation.guests.length; i++) {
 					for (var j = 0; j < matchedTerms.length; j++) {
-						if (invitation.guests[i].first.startsWith(searchterms[j]) || invitation.guests[i].last.startsWith(searchterms[j])){
+						if (invitation.guests[i].first.toLowerCase().startsWith(searchterms[j]) || invitation.guests[i].last.toLowerCase().startsWith(searchterms[j])){
 							matchedTerms[j] = true;
 						}
 					}
