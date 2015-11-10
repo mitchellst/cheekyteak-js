@@ -15,6 +15,7 @@ module.exports = function(config){
 
       // then spec files
       'testing/weddingNamesSpec.js',
+      'testing/invitationTypeSpec.js',
       'testing/liveSearchTestingData.js',
       'testing/liveSearchSpecFile.js'
 

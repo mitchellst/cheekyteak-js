@@ -11,7 +11,6 @@ function Invitation(guests){
   //formatConfig can be undefined, or else is a config object for invitation name maker.
   this.guests = guests;
   this.id = this.setId(this.guests);
-  this.name = undefined;
   this.attendingName = undefined;
   this.decliningName = undefined;
   this.attendance = _.countBy(this.guests, function(val){
@@ -22,7 +21,8 @@ function Invitation(guests){
 
 }
 
-Invitation.prototype.setId = function(ga){
+Invitation.prototype.setId = function(){
+  var ga = this.guests;
   if (ga.length === 0){return undefined;}
   if(!_.every(ga, function(val){
     return val.invitation == ga[0].invitation || val.invitation === undefined;})){
@@ -31,7 +31,13 @@ Invitation.prototype.setId = function(ga){
   return ga[0].invitation;
 };
 
-Invitation.prototype.getStatusName = function(ga, status, config){
-  var a = _.filter(ga, function(val){return val.status == status;});
-  return getInvitationName(a, config);
+Invitation.prototype.setStatusNames = function(config){
+  var n = _.filter(this.guests, function(val){return val.status === 1;});
+  this.attendingName = getInvitationName(n);
+  var o = _.filter(this.guests, function(val){return val.status === 2;});
+  this.notAttendingName = getInvitationName(o);
+};
+
+Invitation.prototype.setName = function(config){
+  this.name = getInvitationName(this.guests, config);
 };
